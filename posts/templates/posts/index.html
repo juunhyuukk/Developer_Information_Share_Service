@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>posts</h1>
+<a href="{% url 'posts:new' %}">New</a>
+<hr>
+{% for post in posts %}
+  <p>글 번호: {{ post.pk }}</p>
+  <p>글 제목: {{ post.title }}</p>
+  <p>글 내용: {{ post.content }}</p>
+  <hr>
+{% endfor %}
+{% endblock content %}
