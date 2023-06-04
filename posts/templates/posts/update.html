@@ -1,9 +1,14 @@
 {% extends 'base.html' %}
 
+{% block style %}
+{% endblock style %}
+
 {% block content %}
 <h1>Edit</h1>
 <form action="{% url 'posts:update' post.pk %}" method="POST">
   {% csrf_token %}
   {{ form.as_p }}
-<a href="{% url 'posts:index' %}">[back]</a>
+  <input class="btn btn-outline-dark" type="submit">
+</form>
+<a class="btn btn-outline-dark" href="{% url 'posts:index' %}">BACK</a>
 {% endblock content %}

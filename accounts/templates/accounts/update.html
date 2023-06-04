@@ -4,9 +4,10 @@
 {% endblock style %}
 
 {% block content %}
-<form action="{% url 'posts:create' %}" method="POST">
+<h1>회원정보 수정</h1>
+<form action="{% url 'accounts:update' %}" method="POST">
   {% csrf_token %}
   {{ form.as_p }}
   <input class="btn btn-outline-dark" type="submit">
-</form>
+<a class="btn btn-outline-dark" href="{% url 'accounts:delete' %}">회원 탈퇴</a>
 {% endblock content %}
