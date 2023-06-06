@@ -60,12 +60,24 @@ def update(request, pk):
 
 
 def dev(request):
-    return render(request, 'posts/dev.html')
+    posts = Post.objects.filter(category='개발')
+    context = {
+        'posts' : posts
+    }
+    return render(request, 'posts/dev.html', context)
 
 
 def CS(request):
-    return render(request, 'posts/CS.html')
+    posts = Post.objects.filter(category='CS')
+    context = {
+        'posts' : posts
+    }
+    return render(request, 'posts/CS.html', context)
 
 
 def newtech(request):
-    return render(request, 'posts/newtech.html')
+    posts = Post.objects.filter(category='신기술')
+    context = {
+        'posts' : posts
+    }
+    return render(request, 'posts/newtech.html', context)

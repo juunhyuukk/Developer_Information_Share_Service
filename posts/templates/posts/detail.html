@@ -4,18 +4,14 @@
 {% endblock style %}
 
 {% block content %}
-<h1>Detail</h1>
-<h3>{{ post.pk }}번째 글</h3>
-<hr>
 <p>제목: {{ post.title }}</p>
 <p>내용: {{ post.content }}</p>
 <p>카테고리: {{ post.category }}</p>
 <p>작성 시각: {{ post.created_at }}</p>
 <p>수정 시각: {{ post.updated_at }}</p>
-<a class="btn btn-outline-dark" href="{% url 'posts:update' post.pk %}">EDIT</a>
 <form action="{% url 'posts:delete' post.pk %}" method="POST">
   {% csrf_token %}
   <input class="btn btn-outline-dark" type="submit" value="DELETE">
-</form>
-<a class="btn btn-outline-dark" href="{% url 'posts:index' %}">BACK</a>
+<a class="btn btn-outline-dark" href="{% url 'posts:update' post.pk %}">EDIT
+<a class="btn btn-outline-dark" href="{% url 'posts:index' %}">BACK</a></a></form>
 {% endblock content %}

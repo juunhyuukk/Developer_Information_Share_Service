@@ -4,5 +4,12 @@
 {% endblock style %}
 
 {% block content %}
-<h1>newtech</h1>
+  {% for post in posts %}
+    <div>
+      <a href="{% url 'posts:detail' post.pk %}">
+        제목: {{ post.title }} / 카테고리: {{ post.category }}
+      </a>
+      <hr>
+    </div>
+  {% endfor %}
 {% endblock content %}

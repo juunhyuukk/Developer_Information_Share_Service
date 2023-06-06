@@ -4,33 +4,12 @@
 {% endblock style %}
 
 {% block content %}
-{% comment %}
-{% if request.user.is_authenticated %}
-    <h3>안녕하세요, {{ user }} 님!</h3>
-    <form action="{% url 'accounts:logout' %}" method="POST">
-      {% csrf_token %}
-      <input type="submit" value="Logout">
-    </form>
-    <form action="{% url 'accounts:delete' %}" method="POST">
-      {% csrf_token %}
-      <input type="submit" value="회원탈퇴">
-    </form>
-    <a href="{% url 'accounts:update' %}">회원정보수정</a>
-  {% else %}
-    <h1>개발자 정보 공유 서비스</h1>
-    <p></p>
-    <p></p>
-    <a href="{% url 'accounts:signup' %}">[회원가입]</a>
-    <p></p>
-    <a href="{% url 'accounts:login' %}">[로그인]</a>
-  {% endif %}
-{% endcomment %}
-
   {% for post in posts %}
-    <p>제목: 
-      <a href="{% url 'posts:detail' post.pk %}">{{ post.title }}</a>
-    </p>
-    <p>내용: {{ post.content }}</p>
-    <hr>
+    <div>
+      <a href="{% url 'posts:detail' post.pk %}">
+        제목: {{ post.title }} / 카테고리: {{ post.category }}
+      </a>
+      <hr>
+    </div>
   {% endfor %}
 {% endblock content %}
